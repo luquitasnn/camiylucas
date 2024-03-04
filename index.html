@@ -123,11 +123,11 @@
 
             <div class="box-frase-portada">
               <p>
-                <img src="https://fixdate.io/modelo-invitacion/58/img/comilla-apertura.svg" alt=""> <br>
+               
 
-                La coca y el fernet, <br> juntos por siempre <br>
+                Vivirlo con vos <br> para mí es la gloria 
 
-                <img src="https://fixdate.io/modelo-invitacion/58/img/comilla-cierre.svg" alt="">
+
               </p>
             </div>
 
@@ -818,7 +818,7 @@
 
         <div class="modal-body">
 
-          <p>Contenido Tips y Notas</p>
+          <p>Disfrutar, pasarla bien y bailar MUCHO!</p>
 
         </div>
 
@@ -1139,17 +1139,7 @@
 
 
 
-<!-- Animacion loader -->
-<script>
-  let svgContainerLoader = document.querySelector('.loader');
 
-  let animLoader = bodymovin.loadAnimation({
-    wrapper: svgContainerLoader,
-    animType: 'svg',
-    loop: true,
-    path: _pathProducto + "img/corazon.json"
-  });
-</script>
 
 
 
@@ -1200,126 +1190,23 @@
   
 
 
-  <!-- Animacion corazon seccion cuenta regresiva-->
-  <script>
-    let svgContainerCorazonFalta = document.querySelector('.corazon-falta');
-
-    let animCorazonFalta = bodymovin.loadAnimation({
-      wrapper: svgContainerCorazonFalta,
-      animType: 'svg',
-      loop: true,
-      path: _pathProducto + "img/corazon-falta.json"
-    });
-  </script>
-
-
-
-  <!-- Animacion anillos -->
-  <script>
-    let svgContainerAnillos = document.querySelector('.anim-anillos');
-
-    let animAnillos = bodymovin.loadAnimation({
-      wrapper: svgContainerAnillos,
-      animType: 'svg',
-      loop: true,
-      path: _pathProducto + "img/img_ceremonia.json"
-    });
-
-    animAnillos.play();
-  </script>
-
-
-  <!-- Animacion galeria -->
-  <script>
-    let svgContainerGaleria = document.querySelector('.anim-galeria');
-
-    let animGaleria = bodymovin.loadAnimation({
-      wrapper: svgContainerGaleria,
-      animType: 'svg',
-      loop: true,
-      path: _pathProducto + "img/json_camara.json"
-    });
-
-    animGaleria.play();
-  </script>
 
 
 
 
-  <!-- Animacion Vestuario -->
-  <script>
-    let svgContainerVestuario = document.querySelector('.anim-vestuario');
-
-    let animVestuario = bodymovin.loadAnimation({
-      wrapper: svgContainerVestuario,
-      animType: 'svg',
-      loop: true,
-      path: _pathProducto + "img/vestuario.json"
-    });
-
-    animVestuario.play();
-  </script>
-
-
-  <!-- Animacion Tips -->
-  <script>
-    let svgContainerTips = document.querySelector('.anim-tips');
-
-    let animTips = bodymovin.loadAnimation({
-      wrapper: svgContainerTips,
-      animType: 'svg',
-      loop: true,
-      path: _pathProducto + "img/tips.json"
-    });
-
-    animTips.play();
-  </script>
-
-
-  <!-- Animacion canciones -->
-  <script>
-    let svgContainerFiesta = document.querySelector('.anim-fiesta');
-
-    let animFiesta = bodymovin.loadAnimation({
-      wrapper: svgContainerFiesta,
-      animType: 'svg',
-      loop: true,
-      path: _pathProducto + "img/img_fiesta.json"
-    });
-
-    animFiesta.play();
-  </script>
-
-
-  <!-- Animacion regalos -->
-  <script>
-    let svgContainerRegalos = document.querySelector('.anim-regalos');
-
-    let animRegalos = bodymovin.loadAnimation({
-      wrapper: svgContainerRegalos,
-      animType: 'svg',
-      loop: true,
-      path: _pathProducto + "img/img_regalo.json"
-    });
-
-    animRegalos.play();
-  </script>
 
 
 
-  <!-- Animacion instagram -->
-  <script>
-    let svgContainerInstagram = document.querySelector('.anim-instagram');
 
-    let animInstagram = bodymovin.loadAnimation({
-      wrapper: svgContainerInstagram,
-      animType: 'svg',
-      loop: true,
-      path: _pathProducto + "img/img_instagram.json"
-    });
 
-    animInstagram.play();
-  </script>
+
+
+
+
+
+
+
+
 
 
   <!-- Opciones carrusel galeria -->
@@ -1663,29 +1550,9 @@
   <!-- Instagram parallax -->
   <script>
     // Si el ancho es de Telefono
-    if ($(window).width() < 768) {
-
-      // Aceptar webp?
-      if (support_format_webp()) {
-        var imageInstagramParallax = 'img/instagram_mobile.webp';
-      } else {
-        var imageInstagramParallax = 'img/instagram_mobile.jpg';
-      }
-
-    } else {
-
-      // Aceptar webp?
-      if (support_format_webp()) {
-        var imageInstagramParallax = 'img/instagram.webp';
-      } else {
-        var imageInstagramParallax = 'img/instagram.jpg';
-      }
-
-    }
 
     $('.instagram').parallax({
-     // imageSrc: 'images/instagram.jpg'
-	  imageSrc: ' file:///C:/Users/Lucas/Downloads/20220720_172839.jpg' 
+      imageSrc: 'images/portada3.jpg'
     });
   </script>
 
@@ -1856,8 +1723,7 @@
   </script>
 
 
-  <!-- AddEvent script -->
-  <script type="text/javascript" src="https://addevent.com/libs/atc/1.6.1/atc.min.js" async defer></script>
+
 
 
   <!-- AddEvent Settings -->
