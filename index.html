@@ -127,7 +127,7 @@
               <p>
                
 
-                Vivirlo con vos <br> para mí es la gloria 
+                Elegimos <br> Creer 
 
 
               </p>
@@ -257,17 +257,8 @@
 
           <div class="info-box">
             <h6>Día</h6>
-            <p>Viernes 22 de Noviembre - 19 hs.</p>
-            <a href="#" class="boton addeventatc">
-
-              <span class="nameBtn">Agendar</span>
-
-              <span class="start">2024-02-21 16:58:13</span>
-              <span class="end">2024-02-21 16:58:13</span>
-              <span class="timezone">America/Argentina/Buenos_Aires</span>
-              <span class="title">Boda de Cami y Lucas (Ceremonia)</span>
-
-            </a>
+            <p>Viernes 22 de Noviembre - 19:00 hs.</p>
+			<a href="#" data-evento="agendar" class="boton agendar">Agendar</a>
           </div>
 
           <div class="info-box">
@@ -413,16 +404,16 @@
 
         <div class="w-100 content-item-fiesta d-flex flex-column justify-content-between align-items-center">
 
-          <h3>Tips y Notas</h3>
+          <h3>Mensaje</h3>
 
 
 
           <p>
-            Información adicional <br> para tener en cuenta          </p>
+            Queres dejarnos <br> un mensaje?          </p>
 
 
-          <a href="#" class="boton  modal-tips">
-            + Info          </a>
+          <a href="#" class="boton  mensaje">
+            Enviar          </a>
 
         </div>
 
@@ -774,7 +765,7 @@
 
         <div class="modal-body">
 
-          <p>Formal! </p>
+          <p>FORMAL </p>
 
         </div>
 
@@ -815,7 +806,7 @@
 
         <div class="modal-header">
 
-          <h5 class="modal-title">Tips y Notas</h5>
+          <h5 class="modal-title">Mensaje</h5>
 
         </div>
 
@@ -1270,6 +1261,8 @@
       if (evento == 'Ceremonia') {
         window.open('https://forms.gle/mT1AmDseFB7bMUZN9', '_blank').focus();
       }
+	  
+	  
 
     });
 
@@ -1286,6 +1279,19 @@
       });
     </script>
 
+    <!-- Modal agendar -->
+    <script>
+      // Abrir agendar
+      $('body').on('click', 'a.agendar', function(e) {
+        e.preventDefault();
+        //window.open('https://calendar.google.com/calendar/r?cmd=addevent&t=g&calid=primary&text=Boda%20EventCami&Lucas=Boda%20event.&startdt=2024-11-22T19:00:00&enddt=2024-11-32T04:00:00', '_blank').focus();
+		window.open('https://calendar.google.com/calendar/u/0/r/day/2024/11/22?pli=1', '_blank').focus();
+		
+		
+      });
+	  
+	  
+    </script>
 
   <!-- Cuenta regresiva -->
   <script>
@@ -1338,166 +1344,21 @@
       window.open('https://forms.gle/fKnGkjg7wBSV4Lsf6', '_blank').focus();
 
     });
-
-
-
-    // Validacion de form.
-    function isOkSugerirCancion() {
-
-
-      // Remuevo mensajes de error anteriores
-      $("#error-form").remove();
-
-      // Variables necesarias para la validacion
-      var flag = true;
-      var err = '';
-
-
-      // Variables del form para validar.
-      var sugerenciaName = $.trim($("#nombreSugerencia").val());
-      var sugerenciaDescription = $.trim($("#descripcionSugerencia").val());
-      var sugerenciaLink = $.trim($("#linkSugerencia").val());
-
-
-
-      // Descripcion
-      if (sugerenciaDescription == '') {
-        flag = false;
-        err = lang_cancionRequerida;
-      } else {
-        if (sugerenciaDescription.length > 50) {
-          flag = false;
-          err = lang_caracteresCancionSugerencia;
-        }
-      }
-
-      // Link
-      if (sugerenciaLink != '') {
-
-        if (!is_url(sugerenciaLink)) {
-          flag = false;
-          err = lang_linkIncorrecto;
-        }
-        if (sugerenciaLink.length > 250) {
-          flag = false;
-          err = lang_caracteresLinkSugerencia;
-        }
-
-      }
-
-      // Nombre
-      if (sugerenciaName == '') {
-        flag = false;
-        err = lang_nombreRequerido;
-      } else {
-        if (sugerenciaName.length > 20) {
-          flag = false;
-          err = lang_caracteresNombreSugerencia;
-        }
-      }
-
-
-      // Si hay error
-      if (flag === false) {
-
-        // Imprimo el error
-        $('#formSugerirCancion').after('<span id="error-form">' + err + '</span>');
-
-      }
-
-      // Retorno el estado de la validacion
-      return flag;
-
-    }
-
-
-
-    // Enviar sugerencia
-    $('body').on('click', '#sendSugerenciaCancion', function(e) {
+	
+	
+	 $('body').on('click', 'a.mensaje', function(e) {
 
       e.preventDefault();
-
-
-      if (isOkSugerirCancion()) //Form bien validado
-      {
-
-        // Load and disabled buttom.
-        $("#sendSugerenciaCancion").text(lang_enviandoSugerencia + "...");
-        $("#sendSugerenciaCancion").prop("disabled", true);
-
-        // Obtengo el Form.
-        var formulario = $("#formSugerirCancion")[0];
-
-        // Obtengo los datos del formulario
-        var datos = new FormData(formulario);
-
-
-        // Visualizar como viajan los datos
-        for (var pair of datos.entries()) {
-          console.log(pair[0] + ", " + pair[1]);
-        }
-
-
-        // Envio con fetch los datos mediante POST
-        fetch(_pathApp + "producto/fetchs/sugerir-cancion.php", {
-            method: "POST",
-            body: datos
-          })
-          // Promesas fetch
-          .then(res => res.json())
-          .then(data => {
-
-            // Si recibo error 
-            if (data.error === true) {
-
-              $("#sendSugerenciaCancion").text(lang_sugerirCancion);
-              $("#sendSugerenciaCancion").prop("disabled", false);
-
-              // Imprimo el error
-              $('#formSugerirCancion').after('<span id="error-form">' + data.desc + '</span>');
-            }
-
-            // Si no hay error 
-            if (data.error === false) {
-
-              $("#sendSugerenciaCancion").text(lang_sugerirCancion);
-              $("#sendSugerenciaCancion").prop("disabled", false);
-
-
-              // Oculto elementos del form y reseteo
-              $('#formSugerirCancion')[0].reset();
-              $('#modalSugerirCancion .formulario-content, #modalSugerirCancion .modal-footer, #modalSugerirCancion h5').hide();
-
-
-              // Acomodo el css para centrar mensaje
-              $('#modalSugerirCancion .modal-body').addClass('fix-height');
-
-
-              // Muestro mensaje de exito
-
-              $('#modalSugerirCancion .msj-content').html(
-                "<h5>" + lang_sugerirCancionMsjExito_1 + "</h5><p>" + lang_sugerirCancionMsjExito_2 + "</p>"
-              ).show();
-
-
-              // Cierro modal y vuelvo a activar form
-              setTimeout(function() {
-
-                $('#modalSugerirCancion').modal('hide');
-                $('#modalSugerirCancion .formulario-content, #modalSugerirCancion .modal-footer, #modalSugerirCancion h5').show();
-                $('#modalSugerirCancion .msj-content').html('').hide();
-                $('#modalSugerirCancion .modal-body').removeClass('fix-height');
-
-              }, 4000);
-
-            }
-
-          });
-      }
-
+      window.open('https://docs.google.com/forms/d/1s6Duc420NvFU8bKDkFcgmxdqqGtfsVeBEXgrS2aGTn8/prefill', '_blank').focus();
 
     });
-  </script>
+	
+	
+	
+	</script>
+
+
+
 
 
   <!-- Modal Vestuario -->
@@ -1725,7 +1586,8 @@
     }
   </script>
 
-
+<!-- AddEvent script -->
+  <script type="text/javascript" src="https://addevent.com/libs/atc/1.6.1/atc.min.js" async defer></script>
 
 
 
